@@ -22,6 +22,7 @@ public class Tournament {
 	private int price;
 	private String winner;
 	private String venue;
+	private String name;
 	@OneToMany
 	@JoinTable(name="record", joinColumns = @JoinColumn(name="eventId"),
 					inverseJoinColumns = @JoinColumn(name="participantId"))
@@ -61,6 +62,12 @@ public class Tournament {
 	}
 	public void setParticipants(Collection<Athlete> participants) {
 		this.participants = participants;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }
