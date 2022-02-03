@@ -1,6 +1,7 @@
 package sports.dlithe.tournaments.log.DlitheTournaments.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,7 @@ import sports.dlithe.tournaments.log.DlitheTournaments.services.AthleteService;
 import sports.dlithe.tournaments.log.DlitheTournaments.services.TournamentService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class DlitheController {
 	
 	@Autowired
