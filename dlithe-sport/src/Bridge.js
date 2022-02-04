@@ -7,3 +7,8 @@ export const inserting=async(obj)=>{
     const t= await axios.post(`${url}/add`, obj)
     return t;
 }
+
+export const collecting=async()=>{
+    const t = await axios.get(`${url}/`)
+    return t;
+}
