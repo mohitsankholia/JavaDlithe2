@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import sports.dlithe.tournaments.log.DlitheTournaments.enity.Athlete;
 import sports.dlithe.tournaments.log.DlitheTournaments.enity.Tournament;
 import sports.dlithe.tournaments.log.DlitheTournaments.services.AthleteService;
 import sports.dlithe.tournaments.log.DlitheTournaments.services.TournamentService;
@@ -33,5 +34,18 @@ public class DlitheController {
 	public List<Tournament> readingMore()
 	{
 		return tservice.fetchingAll(); 
+	}
+	
+	@PostMapping("/part")
+	public String addingAth(@RequestBody Athlete athlete)
+	{
+		// adding athlete to the table of tournament in participants list
+//		athlete.getTournament().getParticipants().add(athlete);
+//		tservice.newOne(athlete.getTournament());
+		String t = aservice.enroll(athlete);
+		Tournament tour = tservice.fetchingOnlyOne(athlete.getTournament().getTournamentId());
+		tour.getParticipants().add(athlete);
+		tservice.newOne(tour);
+		return t;
 	}
 }

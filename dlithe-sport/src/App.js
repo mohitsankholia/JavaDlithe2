@@ -3,6 +3,8 @@ import { NewTournament } from './NewTournament'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import { Home } from './Home'
 import { Menu } from './Menu'
+import { Athlete } from './Athlete'
+
 
 const App=()=>{
   return(
@@ -11,7 +13,7 @@ const App=()=>{
         <Routes>
         <Route path="/" exact element={<Home/>}/>
           <Route path="/new" exact element={<NewTournament/>}/>
-          <Route path="/old" exact element={<h1>OLD Page</h1>}/>
+          <Route  path="/ath/:position" exact element={<Athlete/>}/>
         </Routes>
       </BrowserRouter>
   )

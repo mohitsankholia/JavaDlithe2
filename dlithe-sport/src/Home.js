@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { collecting } from "./Bridge";
+import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
 
 export const Home=()=>{
     const[every,setEvery]=useState([])
@@ -27,6 +28,7 @@ export const Home=()=>{
                                     <th>Tournament Participants</th>
                                     <th>Tournament Winner</th>
                                     <th>Tournament Prize Money</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody className="bg-danger text-info">
@@ -39,6 +41,12 @@ export const Home=()=>{
                                         <td>{obj.participants.length}</td>
                                         <td>{obj.winner}</td>
                                         <td>{obj.price}</td>
+                                        <td>
+                                            <a className="btn btn-outline-warning"
+                                                href={`/ath/${index}`}>
+                                                <AccountBoxOutlinedIcon/>
+                                            </a>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>

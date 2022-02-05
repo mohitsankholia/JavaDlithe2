@@ -3,9 +3,10 @@ package sports.dlithe.tournaments.log.DlitheTournaments.enity;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,10 +16,26 @@ import javax.persistence.OneToMany;
 
 import org.springframework.lang.Nullable;
 
+/* 
+ * entity relationships
+ * 1 to 1
+ * 1 to many
+ * many to 1
+ * many to many
+ * 
+ * 
+ * scopes of entity object:
+ * transient>> not yet attached to the orm
+ * persist>> attached to orm
+ * detach>> disconnected from orm
+ */
+
+
+
 @Entity
-public class Tournament {
-	
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+public class Tournament 
+{
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int tournamentId;
 	private Date startDate;
 	private int price;
@@ -26,12 +43,11 @@ public class Tournament {
 	private String winner;
 	private String venue;
 	private String name;
-	@OneToMany
-	@JoinTable(name="record", joinColumns = @JoinColumn(name="eventId"),
-					inverseJoinColumns = @JoinColumn(name="participantId"))
-	
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JoinTable(name="record",joinColumns = @JoinColumn(name="eventId"),
+				inverseJoinColumns = @JoinColumn(name="participantId"))
 	@Nullable
-	private Collection<Athlete> participants= new ArrayList<Athlete>();
+	private Collection<Athlete> participants=new ArrayList<Athlete>();
 	public int getTournamentId() {
 		return tournamentId;
 	}
@@ -74,5 +90,4 @@ public class Tournament {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 }

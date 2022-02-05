@@ -23,4 +23,9 @@ public class TournamentService {
 	{
 		return trepo.findAll();
 	}
+	
+	public Tournament fetchingOnlyOne(Integer id)
+	{
+		return trepo.findById(id).orElse(new Tournament());
+	}
 }
