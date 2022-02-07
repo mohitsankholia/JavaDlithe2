@@ -5,6 +5,7 @@ import { Home } from './Home'
 import { Menu } from './Menu'
 import { Athlete } from './Athlete'
 import { Participants } from './Participants'
+import { Past } from './Past'
 
 
 const App=()=>{
@@ -16,6 +17,7 @@ const App=()=>{
           <Route path="/new" exact element={<NewTournament/>}/>
           <Route  path="/ath/:position" exact element={<Athlete/>}/>
           <Route path="/show/:position" exact element={<Participants/>}/>
+          <Route path="/completed" exact element={<Past/>}/>
         </Routes>
       </BrowserRouter>
   )
