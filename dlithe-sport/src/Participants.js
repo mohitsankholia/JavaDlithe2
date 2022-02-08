@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { collecting, onlyOne, updating } from "./Bridge";
+import { onlyOne, updating } from "./Bridge";
 import Button from '@mui/material/Button';
 import EmojiEventsRoundedIcon from '@mui/icons-material/EmojiEventsRounded';
 
@@ -29,7 +29,7 @@ export const Participants=()=>{
     const declare=async(person)=>{
         const t = await updating(person,tour)
         alert(t.data)
-        window.location.assign("/")
+        window.location.assign("/home")
     }
 
     return(
@@ -57,5 +57,6 @@ export const Participants=()=>{
                 ))}
             </div>
         </div>
-    </>);
+    </>
+    );
 }
